@@ -29,5 +29,6 @@ namespace Jwt_Authentication_Authorization.Controllers
             })
             .ToArray();
         }
+        //we need to delete this controller later on.
     }
 }
