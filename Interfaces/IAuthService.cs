@@ -6,5 +6,7 @@ namespace Jwt_Authentication_Authorization.Interfaces
     {
         User AddUser(User user);
         string Login(LoginRequest loginRequest);
+        Role AddRole(Role role);
+        bool AssignRoleToUser(AddUserRole addUserRole);
     }
 }
