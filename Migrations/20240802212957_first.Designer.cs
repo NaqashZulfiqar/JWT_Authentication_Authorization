@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jwt_Authentication_Authorization.Migrations
 {
     [DbContext(typeof(JwtContext))]
-    [Migration("20240724205332_first")]
+    [Migration("20240802212957_first")]
     partial class first
     {
         /// <inheritdoc />
@@ -79,6 +79,10 @@ namespace Jwt_Authentication_Authorization.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
