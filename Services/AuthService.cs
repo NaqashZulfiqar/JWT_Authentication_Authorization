@@ -75,7 +75,8 @@ namespace Jwt_Authentication_Authorization.Services
                     var roles = _context.Roles.Where(r => roleIds.Contains(r.Id)).ToList();
                     foreach (var role in roles)
                     {
-                        claims.Add(new Claim("Role", role.Name));
+                        claims.Add(new Claim(ClaimTypes.Role, role.Name));
+                        //claims.Add(new Claim("Role", role.Name));
                     }
                     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
                     var sigin = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -85,6 +86,7 @@ namespace Jwt_Authentication_Authorization.Services
                         claims,
                         expires: DateTime.UtcNow.AddMinutes(10),
                         signingCredentials: sigin);
+
                     var jwtToken = new JwtSecurityTokenHandler().WriteToken(token);
                     return jwtToken;
                 }
