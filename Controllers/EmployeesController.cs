@@ -10,7 +10,8 @@ namespace Jwt_Authentication_Authorization.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
-    
+    [Authorize(Roles = "Admin")]
+
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
@@ -20,7 +21,7 @@ namespace Jwt_Authentication_Authorization.Controllers
         }
         // GET: api/<EmployeesController>
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public List<Employee> GetEmployees()
         {
             return _employeeService.GetEmployeeDetails();
